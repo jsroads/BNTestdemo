@@ -3,7 +3,7 @@ Layabox2.x如何使用 bignumber.js 的例子
 
 关于大数字使用，前面已经系统的介绍过这个，[大数字BigNumber.js使用](http://blog.asroads.com/post/5aa84949.html)  在Laya1.x的时候也使用这个类库，只是当时项目比较忙，加上我疏于记录，后面就不了了之，昨天下班后，群里一个群友问我Layabox2.x关于([bignumber.js](https://mikemcl.github.io/bignumber.js))使用报错，才有了今天这个文章。
 <!--more-->
-下面就说说这个类库如何在Layabox2.x里面使用，以及报错 Error: /Users/xxxx/my/test/laya/demo/BNTestdemo/src/script/GameUI.ts(27,22): semantic error TS2304: Cannot find name 'BigNumber'. 后如果修改
+下面就说说这个类库如何在Layabox2.x里面使用，以及报错  Error: Could not resolve '../../libs/bignumber' from ../../../../../Users/smile/my/test/laya/demo/BNTestdemo/src/script/GameUI.ts. 后如果修改
 
 首先我们还是按照Layabox 正常的添加类库
 
@@ -59,30 +59,22 @@ import BigNumber from "../../libs/bignumber";
 ![image-20200930121832803](README/image-20200930121832803.png)
 
 ```
-开始编译: Wed Sep 30 2020 12:34:02 GMT+0800 (CST)
+开始编译: Wed Sep 30 2020 12:49:29 GMT+0800 (CST)
 --------------------------------------
-[12:34:03] Working directory changed to /Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app
-[12:34:03] Using gulpfile ~/my/test/laya/demo/BNTestdemo/.laya/compile.js
-[12:34:03] Starting 'compile'...
-{ Error: /Users/smile/my/test/laya/demo/BNTestdemo/src/script/GameUI.ts(27,22): semantic error TS2304: Cannot find name 'BigNumber'.
+[12:49:30] Working directory changed to /Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app
+[12:49:31] Using gulpfile ~/my/test/laya/demo/BNTestdemo/.laya/compile.js
+[12:49:31] Starting 'compile'...
+{ Error: Could not resolve '../../libs/bignumber' from ../../../../../Users/smile/my/test/laya/demo/BNTestdemo/src/script/GameUI.ts
 at error (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup/dist/rollup.js:9402:30)
-at Object.error (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup/dist/rollup.js:15621:24)
-at Object.error (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup/dist/rollup.js:16065:38)
-at RollupContext.error (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup-plugin-typescript2/dist/rollup-plugin-typescript2.cjs.js:17187:30)
-at lodash_3 (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup-plugin-typescript2/dist/rollup-plugin-typescript2.cjs.js:24954:23)
-at arrayEach (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup-plugin-typescript2/dist/rollup-plugin-typescript2.cjs.js:532:11)
-at forEach (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup-plugin-typescript2/dist/rollup-plugin-typescript2.cjs.js:9360:14)
-at printDiagnostics (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup-plugin-typescript2/dist/rollup-plugin-typescript2.cjs.js:24927:5)
-at Object.transform (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup-plugin-typescript2/dist/rollup-plugin-typescript2.cjs.js:26760:17)
-at Promise.resolve.then (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup/dist/rollup.js:15768:25)
-id: '/Users/smile/my/test/laya/demo/BNTestdemo/src/script/GameUI.ts',
-hook: 'transform',
-code: 'PLUGIN_ERROR',
-plugin: 'rpt2' }
-[12:34:06] Finished 'compile' after 2.82 s
+at ModuleLoader.handleMissingImports (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup/dist/rollup.js:16396:17)
+at ModuleLoader. (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup/dist/rollup.js:16447:26)
+at Generator.next ()
+at fulfilled (/Applications/LayaAirIDE_2_7_0_beta.app/Contents/Resources/app/node_modules/rollup/dist/rollup.js:15428:28)
+at code: 'UNRESOLVED_IMPORT' }
+[12:49:34] Finished 'compile' after 2.87 s
 --------------------------------------
-编译结束，gulp编译耗时: 4.102s
-编译结束，总耗时: 4.191s
+编译结束，gulp编译耗时: 4.057s
+编译结束，总耗时: 4.129s
 ```
 
 这个 怎么回事？难道是路径错了？还是这样加载不对，经过两个小时的搜索和本地测试，发现了问题！
