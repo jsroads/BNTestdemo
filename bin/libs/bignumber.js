@@ -2898,5 +2898,7 @@
     }
 
     globalObject.BigNumber = BigNumber;
+    window.BigNumber = BigNumber;
   }
 })(this);
+
